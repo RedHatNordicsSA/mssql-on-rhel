@@ -1,0 +1,44 @@
+---
+- name: Create a VM from a template
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    vcenter_server:
+    vcenter_user:
+    vcenter_pass:
+    vm_name: 
+    vm_template: 
+    guest_domain:
+
+  tasks:
+  - name: Clone the template
+    vmware_guest:
+      hostname: "{{ vcenter_server }}"
+      username: "{{ vcenter_user }}"
+      password: "{{ vcenter_pass }}"
+      validate_certs: False
+      name: "{{ vm_name }}"
+      template: "{{ vm_template }}"
+      datacenter: "{{ vm_datacenter }}"
+      folder: /"{{ vm_folder }}"
+      disk:
+      - size_gb: "{{ vm_disk_size }}"
+        type: default
+        datastore: "{{ vm_datastore }}"
+      hardware:
+        memory_mb: "{{ vm_memory }}"
+        num_cpus: "{{ vm_cpu }}"
+      customization_spec: "{{ vm_cuztomization_spec }}"
+      state: poweredon
+      wait_for_ip_address: yes 
+      
+  - name: Pass variables to Tower Workflows
+    set_stats:
+      data:
+        vm_name: "{{ vm_name }}"
+        vm_cpu: "{{ vm_cpu }}"
+        vm_memory: "{{ vm_memory }}"
+        vm_disk_size: "{{ vm_disk_size }}"
+        vm_datastore: "{{ vm_datastore }}"
+

@@ -1,0 +1,12 @@
+---
+- name: "Post configuration of VM"
+  hosts: "{{ vm_name }}" 
+  collections: 
+    - redhatinsights.insights 
+  become: yes
+
+  tasks:
+    
+    - name: Register with Red Hat insights
+      insights_register:
+        state: present

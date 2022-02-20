@@ -1,0 +1,13 @@
+---
+collections:
+  - name: redhat.rhel_system_roles
+    src: https://console.redhat.com/api/automation-hub/
+  
+  - name: redhatinsights.insights
+    src: https://console.redhat.com/api/automation-hub/
+
+  - name: microsoft.sql
+    src: https://console.redhat.com/api/automation-hub/
+
+  - name: community.vmware
+    src: https://galaxy.ansible.com

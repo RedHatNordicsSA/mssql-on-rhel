@@ -1,0 +1,21 @@
+---
+- name: "Post configuration of VM"
+  hosts: "{{ vm_name }}" 
+  become: yes
+
+  tasks:
+  
+    - name: Register VM with Red Hat subscription 
+      redhat_subscription:
+        state: present
+        username: "{{ rhsm_username }}"
+        password: "{{ rhsm_password }}"
+        pool_ids: "{{ rhsm_pool_id }}"
+        consumer_name: "{{ vm_name }}"
+        auto_attach: true 
+        force_register: yes
+
+    - name: Enabnle relevant RHEL8 repos
+      rhsm_repository:
+        name: "{{ item }}"
+      with_items: "{{ rhsm_repos }}"
