@@ -21,7 +21,7 @@
       name: "{{ vm_name }}"
       template: "{{ vm_template }}"
       datacenter: "{{ vm_datacenter }}"
-      folder: /"{{ vm_folder }}"
+      folder: "{{ vm_folder }}"
       disk:
       - size_gb: "{{ vm_disk_size }}"
         type: default
