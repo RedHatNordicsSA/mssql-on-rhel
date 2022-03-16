@@ -4,6 +4,9 @@
   vars: 
     metrics_retention_days: 7
     metrics_from_mssql: yes
+    mssql_agent_trusted:
+    mssql_agent_username: sa
+    mssql_agent_password: RedHat123!
 
   roles: 
     - redhat.rhel_system_roles.metrics
