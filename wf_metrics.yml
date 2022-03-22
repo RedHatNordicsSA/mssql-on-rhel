@@ -4,9 +4,9 @@
   vars: 
     metrics_retention_days: 7
     metrics_from_mssql: yes
-    mssql_agent_trusted:
-    mssql_agent_username: sa
-    mssql_agent_password: RedHat123!
+    mssql_agent_trusted: #leave blank (workaround for https://bugzilla.redhat.com/show_bug.cgi?id=2057615)
+    mssql_agent_username: # encrypt with vault
+    mssql_agent_password: # encrypt with vault
 
   roles: 
     - redhat.rhel_system_roles.metrics
