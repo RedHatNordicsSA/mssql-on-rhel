@@ -15,7 +15,7 @@
         auto_attach: true 
         force_register: yes
 
-    - name: Enabnle relevant RHEL8 repos
+    - name: Enable relevant RHEL8 repos
       rhsm_repository:
         name: "{{ item }}"
       with_items: "{{ rhsm_repos }}"
